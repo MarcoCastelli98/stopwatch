@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gold Stopwatch</title>
+    <title>Stopwatch</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;900&display=swap"
@@ -21,10 +21,22 @@
 
   <body>
     <div class="stopwatch">
-      <h1><span class="gold">GOLD</span> STOPWATCH</h1>
-      <div class="circle">
-        <span class="time" id="display">00:00:00</span>
+      <h1><span class="gold">STOPWATCH </span> </h1>
+      <div class="circle">  
+       <div class="mins time" id="counter">00</div>
+       <svg class="progress-ring" height="270" width="270">
+        <circle
+          class="progress-ring__circle"
+          stroke-width="20"
+          fill="transparent"
+          r="125"
+          cx="135"
+          cy="135"
+        />
+      </svg>
       </div>
+      
+      <span class="time" id="display">00:00:00</span>
 
       <div class="controls">
         <button class="buttonPlay">

@@ -23,14 +23,31 @@ h1 {
 
 .circle {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
 
   height: 270px;
   width: 270px;
 
-  border: 2px solid;
-  border-radius: 50%;
+  /*border: 2px solid;
+  border-radius: 50%;*/
+
+}
+
+.progress-ring {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress-ring__circle {
+  transition: 0.5s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke: #f2c94c;
 }
 
 .time {
