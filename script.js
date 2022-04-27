@@ -53,6 +53,7 @@ function seconds(time){
 let startTime;
 let elapsedTime = 0;
 let timerInterval;
+const countdown = document.querySelector("audio");
 
 // Create function to modify innerHTML
 
@@ -86,6 +87,9 @@ function start() {
     printSeconds(secToString(elapsedTime));
     perc = Math.ceil(((60 - seconds(elapsedTime)) / 60) * 100);
     setProgress(perc);
+    if (seconds(elapsedTime) === 55) {
+      countdown.play();
+    }
   }, 10);
   showButton("PAUSE");
 }
