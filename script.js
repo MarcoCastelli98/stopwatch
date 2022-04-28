@@ -48,11 +48,34 @@ function seconds(time){
   return ss;
 }
 
+function milliseconds(time) {
+  let diffInHrs = time / 3600000;
+  let hh = Math.floor(diffInHrs);
+
+  let diffInMin = (diffInHrs - hh) * 60;
+  let mm = Math.floor(diffInMin);
+
+  let diffInSec = (diffInMin - mm) * 60;
+  let ss = Math.floor(diffInSec);
+
+  let diffInMs = (diffInSec - ss);
+  //let ms = Math.floor(diffInMs);
+
+  return diffInMs;
+}
+
 // Declare variables to use in our functions below
 
 let startTime;
 let elapsedTime = 0;
 let timerInterval;
+const circle = document.querySelector(".progress-ring__circle");
+const radius = circle.r.baseVal.value;
+const circumference = radius * 2 * Math.PI;
+
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = 0;
+  
 const countdown = document.querySelector("audio");
 
 // Create function to modify innerHTML
@@ -66,13 +89,6 @@ function printSeconds(txt) {
 }
 
 function setProgress(percent) {
-  const circle = document.querySelector(".progress-ring__circle");
-  const radius = circle.r.baseVal.value;
-  const circumference = radius * 2 * Math.PI;
-
-  circle.style.strokeDasharray = circumference;
-  circle.style.strokeDashoffset = circumference;
-  
   const offset = circumference - (percent / 100) * circumference;
   circle.style.strokeDashoffset = -offset;
 }
@@ -86,6 +102,7 @@ function start() {
     print(timeToString(elapsedTime));
     printSeconds(secToString(elapsedTime));
     perc = Math.ceil(((60 - seconds(elapsedTime)) / 60) * 100);
+    //perc = ((60 - seconds(elapsedTime)- milliseconds(elapsedTime)) / 60 * 100);
     setProgress(perc);
     if (seconds(elapsedTime) === 56) {
       countdown.play();
