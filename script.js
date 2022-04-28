@@ -87,7 +87,7 @@ function start() {
     printSeconds(secToString(elapsedTime));
     perc = Math.ceil(((60 - seconds(elapsedTime)) / 60) * 100);
     setProgress(perc);
-    if (seconds(elapsedTime) === 55) {
+    if (seconds(elapsedTime) === 56) {
       countdown.play();
     }
   }, 10);
